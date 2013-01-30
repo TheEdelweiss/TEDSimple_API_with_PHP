@@ -1,5 +1,6 @@
 <?php
-abstract class TED_JSONObject {	
+abstract class TED_JSONObject 
+{	
 //----------------------------------------------------------	     
   //--------------------------------------------------->>>>>
       //-----------------------------------------------	         
@@ -12,34 +13,47 @@ abstract class TED_JSONObject {
 //----------------------------------------------------------	 
 //class constructor, -
  	    
-function __construct($JSONoutput) {
-	
-	if (is_array($JSONoutput) & !empty($JSONoutput)) {
-		$this->$JSONoutput = $JSONoutput;		
-	}
+function __construct($JSONoutput) 
+{	
+  if (is_array($JSONoutput) & !empty($JSONoutput)) 
+  {
+	$this->$JSONoutput = $JSONoutput;		
+  }
 }	
 //----------------------------------------------------------
   //--------------------------------------------------->>>>>    
 //----------------------------------------------------------       
 //class destructor, -
 
-function __destruct(){
-	unset($this->JSONoutput);
+function __destruct()
+{
+  unset($this->JSONoutput);
 }	 
 //----------------------------------------------------------
   //--------------------------------------------------->>>>>    
 //----------------------------------------------------------   
 //print encoded JSONoutput, if is set
 
-public function printJSONEncodedObject() {
+public function printJSONEncodedObject() 
+{
        
-       if (isset($this-> JSONoutput) & !empty($this-> JSONoutput)) {
-            print(json_encode($this-> JSONoutput)); 
-        }	
-  }
+  if (isset($this-> JSONoutput) & !empty($this-> JSONoutput)) 
+  {         
+    print(json_encode($this-> JSONoutput)); 
+  }	
+}
 //----------------------------------------------------------
   //--------------------------------------------------->>>>>
-  
+//----------------------------------------------------------
+public function getPHPArray() 
+{
+  if (isset($this-> JSONoutput) & !empty($this-> JSONoutput)) 
+  {          
+    return $this-> JSONoutput; 
+  }	else 
+      return false;	
 }
-
+//----------------------------------------------------------
+  //--------------------------------------------------->>>>>  
+}
 ?>

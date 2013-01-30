@@ -2,12 +2,11 @@
 //---------------------------------------------------------- 
 
 // DB connection config array >    
-     $DB_config = [
+     $DB_config = array(
                    "MySQL_DB_host" => "localhost",
                    "MySQL_DB_name" => "maindb",
                    "MySQL_DB_user" => "stefanpopa",
-                   "MySQL_DB_pass" => "stefanpopa",
-                 ];
-                 
+                   "MySQL_DB_pass" => "stefanpopa"
+                 );
 //----------------------------------------------------------              
 ?>

@@ -27,6 +27,7 @@ class TED_MySQLDatabaseConnection {
         private $dbUser;
         private $dbPass;
         private $dbName;
+        private $connection;
 	  //-----------------------------------------------
   //--------------------------------------------------->>>>>
 //----------------------------------------------------------	    
@@ -37,16 +38,33 @@ class TED_MySQLDatabaseConnection {
         $this->dbUser = $config['MySQL_DB_user'];
         $this->dbPass = $config['MySQL_DB_pass'];
 
-        $connection = mysql_connect($this->dbHost, $this->dbUser, $this->dbPass)
-            or die("<script>alert(\'Could not connect to the database:'.mysql_error().'\');</script>");
-        $DBConnectStatus = mysql_select_db($this->dbName, $connection) 
-            or die("<script>alert(\'Database error: '.mysql_error().'\');</script>");
-       
-        mysql_query("SET NAMES utf8");
+        $this->connection = mysql_connect($this->dbHost, 
+        								  $this->dbUser, 
+        								  $this->dbPass)
+        								  
+            or die("<script>alert(\'Could not connect to the database:'
+                   .mysql_error()
+                   .'\');</script>");
+                   
+        $DBConnectStatus = mysql_select_db($this->dbName, 
+        								   $this->connection) 
+            or die("<script>alert(\'Database error: '
+                   .mysql_error()
+                   .'\');</script>");
+                      
+        mysql_query("SET NAMES UTF-8");
         mysql_query("SET character_set_connection=utf8");
         mysql_query("SET character_set_client=utf8");
         mysql_query("SET character_set_results=utf8");
   } 
+//----------------------------------------------------------
+  //--------------------------------------------------->>>>>    
+//----------------------------------------------------------         
+  function close() {
+
+	  mysql_close ($this->connection);
+}
+  
 //----------------------------------------------------------
   //--------------------------------------------------->>>>>    
 //----------------------------------------------------------       
